@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "auction_usr",
+    "password": "1234",
+    "database": "auction_db",
+    "dialect": "mysql",
+    "host" : "10.172.0.170"
+
+  },
+  "test": {
+    "username": "auction_usr",
+    "password": "1234",
+    "database": "auction_db",
+    "dialect": "mysql",
+    "host" : "10.172.0.170"
+  },
+  "production": {
+    "username": "auction_usr",
+    "password": "1234",
+    "database": "auction_db",
+    "dialect": "mysql",
+    "host" : "10.172.0.170"
+  }
+}

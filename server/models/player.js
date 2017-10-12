@@ -1,14 +1,11 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var Player = sequelize.define('Player', {
+  const Player = sequelize.define('Player', {
     username: DataTypes.STRING,
-    coins: DataTypes.DECIMAL
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    coins: DataTypes.DECIMAL,
   });
+  Player.associate = (models) => {
+    Player.hasMany(models.Inventory);
+  };
   return Player;
 };

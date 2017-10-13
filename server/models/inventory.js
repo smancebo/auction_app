@@ -2,9 +2,9 @@ module.exports = (sequelize, DataTypes) => {
   const Inventory = sequelize.define('Inventory', {
     quantity: DataTypes.INTEGER,
   });
-  // Inventory.associate = (models) => {
-  //   Inventory.hasOne(models.Player, { as: 'username' });
-  //   Inventory.hasOne(models.Item, { as: 'item' });
-  // };
+  Inventory.associate = (models) => {
+    Inventory.belongsTo(models.Player);
+    Inventory.belongsTo(models.Item);
+  };
   return Inventory;
 };

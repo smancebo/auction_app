@@ -1,6 +1,6 @@
 
 <div class="">
-  <form class="login-frm">
+  <form class="login-frm" name="frmUser">
     <div class="text-center"><h3>Aution</h3></div>
 
 
@@ -8,11 +8,13 @@
       <label for="">Username</label>
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input type="text" class="form-control" ng-model='$ctrl.userName'/>
+        <input type="text" class="form-control" ng-model='$ctrl.userName' required/>
       </div>
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-success col-xs-12 col-md-12" ng-click="$ctrl.login()">Login</button>
+      <button type="button" ng-disabled="!frmUser.$valid" class="btn btn-success col-xs-12 col-md-12" ng-click="$ctrl.login()">Login</button>
     </div>
+
+
   </form>
 </div>

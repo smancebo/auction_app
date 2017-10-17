@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Player.associate = (models) => {
     Player.hasMany(models.Inventory);
+    Player.hasMany(models.Bid);
+    Player.hasMany(models.Auction);
   };
   return Player;
 };

@@ -1,18 +1,4 @@
-class playerStatsController {
-  constructor($scope) {
-    this.$scope = $scope;
-  }
-}
-
-function playerStatsLink($scope, $element) {
-  const logOff = $element.find('.fa-power-off');
-  logOff.on('click', (event) => {
-    alert('user clicked');
-    event.preventDefault();
-  });
-}
-
-var template = `<div class="card">
+const template = `<div class="card">
                   <div class="card-header">
                     Player Stats
                     <a href="#" class="logoff-btn pull-right" title="Logoff">
@@ -22,23 +8,39 @@ var template = `<div class="card">
                   <div class="card-body" style="padding:10px">
                     <div class="card-row">
                       <label class="title">Name:</label>
-                      <span>The Player Name</span>
+                      <span>{{:: player.username }}</span>
                     </div>
                     <div class="card-row">
                       <label class="title">Coins:</label>
-                      <span>2345 <i class="fa fa-bitcoin"></i> </span>
+                      <span>{{:: player.coins | number }} <i class="fa fa-bitcoin"></i> </span>
                     </div>
                   </div>
                 </div>`;
+class playerStatsController {
+  constructor($scope, AuthService) {
+    this.$scope = $scope;
+    this.AuthService = AuthService;
+  }
+}
+playerStatsController.$inject = ['$scope', 'AuthService'];
 
-export default function playerStartsDirective (){
+function playerStatsLink($scope, $element, $attr, $ctrl) {
+  const logOff = $element.find('.fa-power-off');
+  logOff.on('click', (event) => {
+    $ctrl.AuthService.LogOff();
+    event.preventDefault();
+  });
+}
+
+
+export default function playerStartsDirective() {
   return {
     restrict: 'E',
     scope: {
-      player: '='
+      player: '=',
     },
-    template: template,
+    template,
     controller: playerStatsController,
-    link: playerStatsLink
+    link: playerStatsLink,
   };
 }

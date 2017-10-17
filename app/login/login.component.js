@@ -1,16 +1,20 @@
+const template = require('./login.html');
 
 class loginController {
-  constructor($state) {
+  constructor($state, $login, AuthService) {
     this.$state = $state;
+    this.loginService = $login;
+    this.AuthService = AuthService;
     this.userName = '';
   }
 
-  login() {
-    this.$state.go('app.auction');
+  async login() {
+    const auth = await this.loginService.login(this.userName);
+    this.AuthService.Set(auth.data.player);
+    this.$state.go('app.auction', { user: auth.data.player });
   }
-
 }
-loginController.$inject = ['$state'];
+loginController.$inject = ['$state', '$login', 'AuthService'];
 
 // function userController() {
 //   this.userName = '';
@@ -20,6 +24,6 @@ loginController.$inject = ['$state'];
 // }
 
 module.exports = {
-  template: require('./login.html'),
-  controller: loginController
+  template,
+  controller: loginController,
 };

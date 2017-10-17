@@ -1,8 +1,14 @@
+const template = require('./aution.component.html');
+
 class auctionController {
-  constructor() {}
+  constructor($stateParams, AuthService) {
+    this.$stateParams = $stateParams;
+    this.AuthService = AuthService;
+    this.currentPlayer = AuthService.Get();
+  }
 }
 
 module.exports = {
-  template: require('./aution.component.html'),
-  controller: auctionController
+  template,
+  controller: auctionController,
 };

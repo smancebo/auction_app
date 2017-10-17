@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     amount: DataTypes.INTEGER,
   });
   Bid.associate = (models) => {
-
-  }
+    Bid.belongsTo(models.Auction);
+    Bid.belongsTo(models.Player);
+  };
   return Bid;
 };

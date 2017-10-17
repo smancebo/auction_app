@@ -1,11 +1,9 @@
-class loginService {
-  constructor($http) {
-    this.$http = $http;
+export default class loginService {
+  constructor(HttpClient) {
+    this.httpClient = HttpClient;
   }
   login(username) {
-
+    return this.httpClient.Post('/login', { username });
   }
 }
-loginService.$inject = ['$http'];
-
-export default loginService;
+loginService.$inject = ['HttpClient'];

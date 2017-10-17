@@ -1,4 +1,14 @@
 
+@import "./_variables.scss";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./_bootwatch.scss";
+
+
+$carrot: '../svg/carrot.svg';
+$diamond: '../svg/diamond.svg';
+$bread: '../svg/bread.svg';
+$megaPhone: '../svg/megaphone.svg';
+$border: #dfdfdf;
 
 .login-frm {
   width: 50%;
@@ -7,6 +17,10 @@
     margin: 0 auto;
 }
 
+.no-margin
+{
+  margin: 0;
+}
 .main-content {
   padding: 10px
 }
@@ -19,4 +33,64 @@
 }
 .card-body .fa-bitcoin {
   color: #D4AF37;
+}
+
+@mixin img-svg($img) {
+  background-image: url($img);
+  width: 42px;
+  height: 42px;
+  display: table;
+  margin:0 auto;
+}
+
+.img-carrot {
+  @include img-svg($carrot);
+}
+.img-diamond {
+  @include img-svg($diamond);
+}
+.img-bread {
+  @include img-svg($bread);
+}
+.img-mega-phone {
+  @include img-svg($megaPhone);
+}
+
+.inventory .quantity p {
+ margin: 0;
+}
+
+.inventory .card-body {
+  max-height: 350px;
+  overflow: scroll;
+}
+
+.inventory .card-body .card-block:not(:last-of-type) {
+  border-bottom: 1px solid $border;
+}
+.current-auction label {
+  margin-right: 10px;
+}
+
+.current-auction .card-block {
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+}
+
+.quantity-block {
+  display: inline-block;
+  margin-top: 15px
+}
+.padding-top {
+  padding-top: 10px
+}
+
+.input-bid {
+  display: inline;
+  width: 100px
+}
+
+.no-current-auction {
+  padding: 20px;
+  color: #dfdfdf;
 }

@@ -12,6 +12,7 @@ import './assets/sass/main.scss';
 import appComponent from './app.component';
 window.$ = $;
 
+
 // Modules
 import loginModule from './login/login.module';
 import auctionModule from './auction/aution.module';

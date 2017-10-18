@@ -4,7 +4,7 @@
     "password": "1234",
     "database": "auction_db",
     "dialect": "mysql",
-    "host" : "localhost"
+    "host" : "10.172.0.170"
 
   },
   "test": {

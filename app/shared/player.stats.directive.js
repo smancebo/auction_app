@@ -1,11 +1,12 @@
 const template = `<div class="card">
+
                   <div class="card-header">
                     Player Stats
                     <a href="#" class="logoff-btn pull-right" title="Logoff">
                     <i class="fa fa-power-off"></i>
                   </a>
                   </div>
-                  <div class="card-body" style="padding:10px">
+                  <div class="card-body" style="padding:10px" ng-show='player'>
                     <div class="card-row">
                       <label class="title">Name:</label>
                       <span>{{:: player.username }}</span>
@@ -25,6 +26,7 @@ class playerStatsController {
 playerStatsController.$inject = ['$scope', 'AuthService'];
 
 function playerStatsLink($scope, $element, $attr, $ctrl) {
+
   const logOff = $element.find('.fa-power-off');
   logOff.on('click', (event) => {
     $ctrl.AuthService.LogOff();

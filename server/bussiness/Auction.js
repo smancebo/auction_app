@@ -1,5 +1,6 @@
 const eventEmitter = require('events');
 const db = require('../models/index');
+const Op = db.Sequelize.Op;
 
 const AuctionStatus = {
   ended: 'ended',
@@ -56,6 +57,9 @@ module.exports = class Auction extends eventEmitter {
     return await model.save();
   }
 
+  static async getAuctions() {
+    return await db.Auction.findAll({ where: {status :{ [Op.ne]: 'ended' } } })
+  }
   static async getAuction(id) {
     let auction = await db.Auction.findOne({
       where: {
